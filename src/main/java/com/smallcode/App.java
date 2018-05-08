@@ -1,7 +1,9 @@
 package com.smallcode;
 
 import com.smallcode.algorithm.BubbleSort;
+import com.smallcode.algorithm.InsertSort;
 import com.smallcode.algorithm.SelectionSort;
+import com.smallcode.util.PrintUtils;
 
 /**
  * Hello world!
@@ -13,10 +15,12 @@ public class App {
         //SelectionSort selectionSort = new SelectionSort();
         //arr = selectionSort.sort(arr);
 
-        BubbleSort bubbleSort = new BubbleSort();
-        arr = bubbleSort.sort(arr);
-        for (int val : arr) {
-            System.out.println(val);
-        }
+//        BubbleSort bubbleSort = new BubbleSort();
+//        arr = bubbleSort.sort(arr);
+
+        InsertSort insertSort = new InsertSort();
+        insertSort.sort(arr);
+
+        PrintUtils.print(arr);
     }
 }
