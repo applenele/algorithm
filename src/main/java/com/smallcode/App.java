@@ -2,6 +2,7 @@ package com.smallcode;
 
 import com.smallcode.algorithm.BubbleSort;
 import com.smallcode.algorithm.InsertSort;
+import com.smallcode.algorithm.QuickSort;
 import com.smallcode.algorithm.SelectionSort;
 import com.smallcode.util.PrintUtils;
 
@@ -18,8 +19,11 @@ public class App {
 //        BubbleSort bubbleSort = new BubbleSort();
 //        arr = bubbleSort.sort(arr);
 
-        InsertSort insertSort = new InsertSort();
-        insertSort.sort(arr);
+//        InsertSort insertSort = new InsertSort();
+//        insertSort.sort(arr);
+
+        QuickSort quickSort = new QuickSort();
+        quickSort.sort(arr);
 
         PrintUtils.print(arr);
     }
