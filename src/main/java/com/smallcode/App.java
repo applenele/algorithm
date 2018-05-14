@@ -25,31 +25,10 @@ public class App {
 //        quickSort.sort(arr);
 
 
-        Integer[] array = SampleDataUtil.makeArray(1000000);
-        Integer[] array1 = array.clone();
+        Integer[] array = SampleDataUtil.makeArray(100000000);
 
-        //PrintUtils.print(array);
-        ShellSort shellSort = new ShellSort();
-        long startTime = System.currentTimeMillis();
-        array = shellSort.sort(array);
-        long endTime = System.currentTimeMillis();
-        float excTime = (float) (endTime - startTime) / 1000;
-        System.out.println("执行时间：" + excTime + "s");
-        //PrintUtils.print(array);
 
-        PrintUtils.printLine();
-
-        System.gc();
-
-        //PrintUtils.print(array1);
-        InsertSort insertSort = new InsertSort();
-        long startTime1 = System.currentTimeMillis();
-        array1 = insertSort.sort(array1);
-        long endTime1 = System.currentTimeMillis();
-        float excTime1 = (float) (endTime1 - startTime1) / 1000;
-        System.out.println("执行时间：" + excTime1 + "s");
-        //PrintUtils.print(array1);
-
+        mergeSortTest(array);
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -62,4 +41,26 @@ public class App {
         System.out.println("执行时间：" + excTime + "s");
         //PrintUtils.print(array);
     }
+
+    public static <T extends Comparable<T>> void insertSortTest(T[] array) {
+        InsertSort insertSort = new InsertSort();
+        long startTime1 = System.currentTimeMillis();
+        array = insertSort.sort(array);
+        long endTime1 = System.currentTimeMillis();
+        float excTime1 = (float) (endTime1 - startTime1) / 1000;
+        System.out.println("执行时间：" + excTime1 + "s");
+    }
+
+    public static <T extends Comparable<T>> void mergeSortTest(T[] array) {
+        //PrintUtils.print(array);
+        System.out.println("开始归并排序：");
+        MergeSort mergeSort = new MergeSort();
+        long startTime1 = System.currentTimeMillis();
+        array = mergeSort.sort(array);
+        //PrintUtils.print(array);
+        long endTime1 = System.currentTimeMillis();
+        float excTime1 = (float) (endTime1 - startTime1) / 1000;
+        System.out.println("执行时间：" + excTime1 + "s");
+    }
+
 }
