@@ -7,6 +7,7 @@ import com.smallcode.util.PrintUtils;
  * @date 2018/5/9
  * 快速排序，分区递归排序，二分思想
  * http://developer.51cto.com/art/201403/430986.htm
+ * 时间复杂度 最差O(n2) 最好O(nlogn)
  */
 public class QuickSort {
 
@@ -41,7 +42,7 @@ public class QuickSort {
         arr[left] = arr[left1];
         arr[left1] = temp;
 
-        quickSort(arr, left + 1, left1 - 1);
+        quickSort(arr, left, left1 - 1);
         quickSort(arr, right1 + 1, right);
     }
 }

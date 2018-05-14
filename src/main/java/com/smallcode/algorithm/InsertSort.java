@@ -1,6 +1,7 @@
 package com.smallcode.algorithm;
 
 import com.smallcode.util.PrintUtils;
+import com.smallcode.util.SortUtils;
 
 /**
  * @author niele
@@ -12,18 +13,15 @@ import com.smallcode.util.PrintUtils;
  */
 public class InsertSort {
     
-    public int[] sort(int[] arr) {
+    public <T extends Comparable<T>> T[] sort(T[] arr) {
         int size = arr.length;
 
         for (int i = 0; i < size - 1; i++) {
             for (int j = i + 1; j > 0; j--) {
-                if (arr[j] < arr[j - 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j - 1];
-                    arr[j - 1] = temp;
+                if(SortUtils.less(arr[j],arr[j-1])){
+                    SortUtils.swap(arr,j-1,j);
                 }
             }
-            PrintUtils.print(arr);
         }
         return arr;
     }
