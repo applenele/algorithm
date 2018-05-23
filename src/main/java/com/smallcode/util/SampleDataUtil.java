@@ -9,7 +9,7 @@ import java.util.*;
 public class SampleDataUtil {
 
     public static Integer[] makeArray(int len) {
-        Integer solutionArr[] = new Integer[len];
+        Integer[] solutionArr = new Integer[len];
         List list=new ArrayList<Integer>();
         for (int i = 0; i < len; i++) {
             list.add(i+1);

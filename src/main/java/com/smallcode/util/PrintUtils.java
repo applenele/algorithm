@@ -2,6 +2,10 @@ package com.smallcode.util;
 
 import java.io.Serializable;
 
+
+/**
+ * @author lenny
+ */
 public class PrintUtils {
 
 

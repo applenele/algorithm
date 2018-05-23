@@ -1,10 +1,16 @@
 package com.smallcode;
 
 import com.smallcode.algorithm.*;
+import com.smallcode.datastructure.MaxHeap;
 import com.smallcode.util.PrintUtils;
 import com.smallcode.util.SampleDataUtil;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
+ * @author
  * Hello world!
  */
 public class App {
@@ -25,10 +31,14 @@ public class App {
 //        quickSort.sort(arr);
 
 
-        Integer[] array = SampleDataUtil.makeArray(100000000);
+//        Integer[] array = SampleDataUtil.makeArray(20);
+//
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("demo", "d");
 
+        // mergeSortTest(array);
 
-        mergeSortTest(array);
+        maxHeapTest();
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -61,6 +71,23 @@ public class App {
         long endTime1 = System.currentTimeMillis();
         float excTime1 = (float) (endTime1 - startTime1) / 1000;
         System.out.println("执行时间：" + excTime1 + "s");
+    }
+
+
+    public static void maxHeapTest(){
+        MaxHeap heap = new MaxHeap(10);
+        heap.insert(7);
+        heap.insert(1);
+        heap.insert(10);
+        heap.insert(18);
+        heap.insert(2);
+        heap.insert(8);
+        heap.insert(19);
+        heap.insert(4);
+        heap.insert(20);
+        heap.insert(30);
+
+        System.out.println(heap.toString());
     }
 
 }
