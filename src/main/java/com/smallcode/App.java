@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * @author
- * Hello world!
+ * @author Hello world!
  */
 public class App {
 
@@ -31,14 +30,20 @@ public class App {
 //        quickSort.sort(arr);
 
 
-//        Integer[] array = SampleDataUtil.makeArray(20);
+        Integer[] array = SampleDataUtil.makeArray(20);
+        Integer[] arr1 = array.clone();
+        heapSort1Test(array);
+        heapSort2Test(arr1);
+
 //
 //        HashMap<String, String> map = new HashMap<>();
 //        map.put("demo", "d");
 
         // mergeSortTest(array);
 
-        maxHeapTest();
+       // maxHeapTest();
+
+
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -74,8 +79,8 @@ public class App {
     }
 
 
-    public static void maxHeapTest(){
-        MaxHeap heap = new MaxHeap(10);
+    public static void maxHeapTest() {
+        MaxHeap<Integer> heap = new MaxHeap<Integer>(10);
         heap.insert(7);
         heap.insert(1);
         heap.insert(10);
@@ -87,7 +92,33 @@ public class App {
         heap.insert(20);
         heap.insert(30);
 
+        while (!heap.isEmpty()) {
+            System.out.println(heap.extractMax());
+        }
+
         System.out.println(heap.toString());
+    }
+
+    public static <T extends Comparable<T>>  void heapSort1Test(T[] array) {
+        HeapSort heapSort = new HeapSort();
+
+        long startTime = System.currentTimeMillis();
+        array = heapSort.sort1(array);
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        System.out.println("heap sort 1 执行时间：" + excTime + "s");
+    }
+
+
+    public static <T extends Comparable<T>>  void heapSort2Test(T[] array) {
+        HeapSort heapSort = new HeapSort();
+        PrintUtils.print(array);
+        long startTime = System.currentTimeMillis();
+        array = heapSort.sort2(array);
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        PrintUtils.print(array);
+        System.out.println("heap sort 2 执行时间：" + excTime + "s");
     }
 
 }
