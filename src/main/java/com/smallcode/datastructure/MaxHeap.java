@@ -31,7 +31,7 @@ public class MaxHeap<T extends Comparable<T>> {
     /**
      * Heapify
      * 构建堆的效率高
-     * 原理：二分shiftDown 比全部的ShiftUp效率高
+     * 原理：先将数据放入完全二叉树中，在构建大顶堆，从非叶子节点开始shiftDown，二分shiftDown 比全部数据的ShiftUp效率高
      * @param arr
      */
     public MaxHeap(T[] arr) {
