@@ -30,13 +30,13 @@ public class App {
 //        quickSort.sort(arr);
 
 
-        Integer[] array = SampleDataUtil.makeArray(200000);
-        Integer[] arr1 = array.clone();
-        Integer[] arr2 = array.clone();
-
-        heapSort1Test(array);
-        heapSort2Test(arr1);
-        heapSort3Test(arr2);
+        Integer[] array = SampleDataUtil.makeArray(10);
+//        Integer[] arr1 = array.clone();
+//        Integer[] arr2 = array.clone();
+//
+//        heapSort1Test(array);
+//        heapSort2Test(arr1);
+//        heapSort3Test(arr2);
 
 //
 //        HashMap<String, String> map = new HashMap<>();
@@ -45,6 +45,10 @@ public class App {
         // mergeSortTest(array);
 
         // maxHeapTest();
+
+        mergeSortTest(array);
+        PrintUtils.print(array);
+        binarySearch(array, 5);
 
 
     }
@@ -133,6 +137,12 @@ public class App {
         float excTime = (float) (endTime - startTime) / 1000;
         //PrintUtils.print(array);
         System.out.println("heap sort 3 执行时间：" + excTime + "s");
+    }
+
+    public static <T extends Comparable<T>> void binarySearch(T[] array, T t) {
+        BinarySearch search = new BinarySearch();
+        int index = search.search(array, t);
+        System.out.println("查找到的下标：" + index);
     }
 
 }
