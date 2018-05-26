@@ -1,6 +1,7 @@
 package com.smallcode;
 
 import com.smallcode.algorithm.*;
+import com.smallcode.datastructure.BinarySearchTree;
 import com.smallcode.datastructure.MaxHeap;
 import com.smallcode.util.PrintUtils;
 import com.smallcode.util.SampleDataUtil;
@@ -30,7 +31,7 @@ public class App {
 //        quickSort.sort(arr);
 
 
-        Integer[] array = SampleDataUtil.makeArray(10);
+//        Integer[] array = SampleDataUtil.makeArray(10);
 //        Integer[] arr1 = array.clone();
 //        Integer[] arr2 = array.clone();
 //
@@ -46,11 +47,11 @@ public class App {
 
         // maxHeapTest();
 
-        mergeSortTest(array);
-        PrintUtils.print(array);
-        binarySearch(array, 5);
+        //mergeSortTest(array);
+        //PrintUtils.print(array);
+        //binarySearch(array, 5);
 
-
+      binarySearchTreeTest();
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -143,6 +144,17 @@ public class App {
         BinarySearch search = new BinarySearch();
         int index = search.search(array, t);
         System.out.println("查找到的下标：" + index);
+    }
+
+    public static void binarySearchTreeTest(){
+        BinarySearchTree<Integer,Integer> binarySearchTree = new BinarySearchTree<>();
+        binarySearchTree.insert(1,2);
+        binarySearchTree.insert(2,3);
+        binarySearchTree.insert(3,5);
+        binarySearchTree.insert(4,10);
+        binarySearchTree.insert(5,1);
+
+
     }
 
 }
