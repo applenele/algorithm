@@ -148,17 +148,22 @@ public class App {
 
     public static void binarySearchTreeTest() {
         BinarySearchTree<Integer, Integer> binarySearchTree = new BinarySearchTree<>();
-        binarySearchTree.insert(1, 2);
+        binarySearchTree.insert(8, 2);
         binarySearchTree.insert(2, 3);
-        binarySearchTree.insert(3, 5);
-        binarySearchTree.insert(4, 10);
+        binarySearchTree.insert(10, 5);
+        binarySearchTree.insert(3, 10);
+        binarySearchTree.insert(4, 1);
+        binarySearchTree.insert(12, 1);
         binarySearchTree.insert(5, 1);
+        binarySearchTree.insert(6, 1);
 
 //        boolean ret = binarySearchTree.contain(4);
 //        System.out.println(ret);
 
-        Integer ret = binarySearchTree.search(4);
-        System.out.println(ret);
+//        Integer ret = binarySearchTree.search(4);
+//        System.out.println(ret);
+
+        binarySearchTree.inOrder();
     }
 
 }
