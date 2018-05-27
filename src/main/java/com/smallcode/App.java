@@ -51,7 +51,7 @@ public class App {
         //PrintUtils.print(array);
         //binarySearch(array, 5);
 
-      binarySearchTreeTest();
+        binarySearchTreeTest();
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -146,15 +146,19 @@ public class App {
         System.out.println("查找到的下标：" + index);
     }
 
-    public static void binarySearchTreeTest(){
-        BinarySearchTree<Integer,Integer> binarySearchTree = new BinarySearchTree<>();
-        binarySearchTree.insert(1,2);
-        binarySearchTree.insert(2,3);
-        binarySearchTree.insert(3,5);
-        binarySearchTree.insert(4,10);
-        binarySearchTree.insert(5,1);
+    public static void binarySearchTreeTest() {
+        BinarySearchTree<Integer, Integer> binarySearchTree = new BinarySearchTree<>();
+        binarySearchTree.insert(1, 2);
+        binarySearchTree.insert(2, 3);
+        binarySearchTree.insert(3, 5);
+        binarySearchTree.insert(4, 10);
+        binarySearchTree.insert(5, 1);
 
+//        boolean ret = binarySearchTree.contain(4);
+//        System.out.println(ret);
 
+        Integer ret = binarySearchTree.search(4);
+        System.out.println(ret);
     }
 
 }

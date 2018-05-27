@@ -68,6 +68,46 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value extends Compara
         return node;
     }
 
+
+    /**
+     * 查找是不是包含key
+     *
+     * @param key
+     * @return
+     */
+    public boolean contain(Key key) {
+        return contain(root, key);
+    }
+
+    private boolean contain(Node node, Key key) {
+        if (node == null) {
+            return false;
+        }
+        if (node.key.compareTo(key) == 0) {
+            return true;
+        } else if (node.key.compareTo(key) > 0) {
+            return contain(node.left, key);
+        } else {
+            return contain(node.right, key);
+        }
+    }
+
+    public Value search(Key key) {
+        return search(root, key);
+    }
+
+    private Value search(Node node, Key key) {
+        if (node == null) {
+            return null;
+        }
+        if (node.key.compareTo(key) == 0) {
+            return node.value;
+        } else if (node.key.compareTo(key) > 0) {
+            return search(node.left, key);
+        } else {
+            return search(node.right, key);
+        }
+    }
 }
 
 
