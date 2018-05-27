@@ -163,7 +163,7 @@ public class App {
 //        Integer ret = binarySearchTree.search(4);
 //        System.out.println(ret);
 
-        binarySearchTree.inOrder();
+        binarySearchTree.levelOrder();
     }
 
 }

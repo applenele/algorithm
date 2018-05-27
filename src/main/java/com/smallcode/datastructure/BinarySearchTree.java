@@ -1,5 +1,10 @@
 package com.smallcode.datastructure;
 
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * 二分搜索树
  * 根节点大于左子树，小于右子树，不是完全二叉树
@@ -152,6 +157,25 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value extends Compara
             postOrder(node.left);
             postOrder(node.right);
             System.out.println(node.key);
+        }
+    }
+
+    public void levelOrder() {
+        LinkedBlockingQueue<Node> q = new LinkedBlockingQueue<>();
+        try {
+            q.put(root);
+            while (!q.isEmpty()) {
+                Node node = q.take();
+                System.out.println(node.key);
+                if (node.left != null) {
+                    q.put(node.left);
+                }
+                if (node.right != null) {
+                    q.put(node.right);
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
