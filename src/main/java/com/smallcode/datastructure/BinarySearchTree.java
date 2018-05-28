@@ -1,8 +1,7 @@
 package com.smallcode.datastructure;
 
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
+import org.omg.CORBA.NO_IMPLEMENT;
+
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -25,6 +24,13 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value extends Compara
             this.key = key;
             this.value = value;
             left = right = null;
+        }
+
+        public Node(Node node) {
+            this.key = node.key;
+            this.value = node.value;
+            this.left = node.left;
+            this.right = node.right;
         }
     }
 
@@ -160,6 +166,13 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value extends Compara
         }
     }
 
+    /**
+     * 层级遍历：按层来遍历。广度优先遍历。
+     * 借助queue来实现
+     * 将父节点放到队列里面，从队列里面取出队首元素。
+     * 查看该元素是不是有子节点，将子节点放到队列里面。
+     * 在从队列里面取出队首元素。依次类推
+     */
     public void levelOrder() {
         LinkedBlockingQueue<Node> q = new LinkedBlockingQueue<>();
         try {
@@ -177,6 +190,120 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value extends Compara
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 获取最小值，根据二叉搜索树的特性，最小值就是最左下角的那个值
+     *
+     * @return
+     */
+    public Key min() {
+        if (count == 0) {
+            return null;
+        }
+        Node node = min(root);
+        return node.key;
+    }
+
+    private Node min(Node node) {
+        if (node.left != null) {
+            return min(node.left);
+        }
+        return node;
+    }
+
+    /**
+     * 求最大值
+     * 根据二叉搜索树的特性，最大值就是最右下角的那个值
+     *
+     * @return
+     */
+    public Key max() {
+        if (count == 0) {
+            return null;
+        }
+        Node node = max(root);
+        return node.key;
+    }
+
+    private Node max(Node node) {
+        if (node.right != null) {
+            return max(node.right);
+        }
+        return node;
+    }
+
+    /**
+     * 删除最小值
+     */
+    public void removeMin() {
+        if (root != null) {
+            root = removeMin(root);
+        }
+    }
+
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            count--;
+            return node.right;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    /**
+     * 删除最大值
+     */
+    public void removeMax() {
+        if (root != null) {
+            root = removeMax(root);
+        }
+    }
+
+    private Node removeMax(Node node) {
+        if (node.right == null) {
+            count--;
+            return node.left;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    /**
+     * 根据key来删除
+     * 1962年,Hibbard提出的-Hubbard Deletion
+     * 从要删除的节点的右子树中找到一个最小值来替换要删除的节点
+     * 另外也可以从要删除的节点的左子树中找到最大值来替换要删除的节点
+     *
+     * @param key
+     */
+    public void remove(Key key) {
+        root = remove(root, key);
+    }
+
+    private Node remove(Node node, Key key) {
+        if (node == null) {
+            return null;
+        }
+        if (node.key.compareTo(key) > 0) {
+            node.left = remove(node.left, key);
+            return node;
+        } else if (node.key.compareTo(key) < 0) {
+            node.right = remove(node.right, key);
+            return node;
+        } else {
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            } else {
+                Node newNode = new Node(min(node.right));
+                newNode.right = removeMin(node.right);
+                newNode.left = node.left;
+                return newNode;
+            }
+        }
+
     }
 }
 

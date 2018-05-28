@@ -163,7 +163,41 @@ public class App {
 //        Integer ret = binarySearchTree.search(4);
 //        System.out.println(ret);
 
-        binarySearchTree.levelOrder();
+        //binarySearchTree.levelOrder();
+
+//        Integer ret = binarySearchTree.min();
+//        System.out.println(ret);
+//
+//        binarySearchTree.removeMin();
+//
+//        ret = binarySearchTree.min();
+//        System.out.println(ret);
+//
+//        binarySearchTree.removeMin();
+//
+//        ret = binarySearchTree.min();
+//        System.out.println(ret);
+
+//        Integer ret1 = binarySearchTree.max();
+//        System.out.println(ret1);
+//
+//        binarySearchTree.removeMax();
+//
+//        ret1 = binarySearchTree.max();
+//        System.out.println(ret1);
+//
+//        binarySearchTree.removeMax();
+//
+//        ret1 = binarySearchTree.max();
+//        System.out.println(ret1);
+//
+//        binarySearchTree.removeMax();
+//
+//        ret1 = binarySearchTree.max();
+//        System.out.println(ret1);
+
+        binarySearchTree.remove(8);
+        binarySearchTree.inOrder();
     }
 
 }
