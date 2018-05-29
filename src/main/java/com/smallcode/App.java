@@ -3,7 +3,10 @@ package com.smallcode;
 import com.smallcode.algorithm.*;
 import com.smallcode.datastructure.BinarySearchTree;
 import com.smallcode.datastructure.MaxHeap;
+import com.smallcode.datastructure.UnionFind;
+import com.smallcode.datastructure.UnionFind2;
 import com.smallcode.util.PrintUtils;
+import com.smallcode.util.RandomUtil;
 import com.smallcode.util.SampleDataUtil;
 
 import java.lang.reflect.Array;
@@ -51,7 +54,13 @@ public class App {
         //PrintUtils.print(array);
         //binarySearch(array, 5);
 
-        binarySearchTreeTest();
+//        binarySearchTreeTest();
+
+        int n = 100000;
+       // unionFindTest1();
+        unionFindTest2(n);
+        System.gc();
+        unionFindTest3(n);
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -200,4 +209,53 @@ public class App {
         binarySearchTree.inOrder();
     }
 
+
+    public static void unionFindTest1() {
+
+        UnionFind unionFind = new UnionFind(10);
+
+        unionFind.union(1, 2);
+        unionFind.union(3, 1);
+
+        System.out.println(unionFind.isConnected(1, 2));
+
+        unionFind.print();
+    }
+
+
+    public static void unionFindTest2(int n) {
+        UnionFind unionFind = new UnionFind(n);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.union(a, b);
+        }
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.isConnected(a, b);
+        }
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        System.out.println("执行时间：" + excTime + "s");
+    }
+
+    public static void unionFindTest3(int n) {
+        UnionFind2 unionFind = new UnionFind2(n);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.union(a, b);
+        }
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.isConnected(a, b);
+        }
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        System.out.println("执行时间：" + excTime + "s");
+    }
 }

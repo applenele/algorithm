@@ -34,7 +34,7 @@ public class UnionFind {
      */
     public int find(int p) {
         if (p >= 0 && p < count) {
-            return ids[0];
+            return ids[p];
         }
         throw new RuntimeException("数组下表越界");
     }
@@ -52,6 +52,7 @@ public class UnionFind {
 
     /**
      * 两个元素做集合操作
+     * 存在性能问题，做union的时候需要遍历数组
      * @param p
      * @param q
      */
@@ -66,6 +67,13 @@ public class UnionFind {
                 ids[i] = pId;
             }
         }
+    }
+
+    public void print() {
+        for (int i = 0; i < count; i++) {
+            System.out.print(ids[i] + ",");
+        }
+        System.out.println();
     }
 
 }
