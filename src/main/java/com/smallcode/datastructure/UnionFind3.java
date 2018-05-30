@@ -1,22 +1,24 @@
 package com.smallcode.datastructure;
 
 /**
- * 并查集，通过树的形式
- *  parent[p]=p
  * @author niele
  * @date 2018/5/30
  */
-public class UnionFind2 {
+public class UnionFind3 {
 
     private int[] parent;
 
     private int count;
 
-    public UnionFind2(int n) {
+    private int[] sz;
+
+    public UnionFind3(int n) {
         parent = new int[n];
         count = n;
+        sz = new int[n];
         for (int i = 0; i < n; i++) {
             parent[i] = i;
+            sz[i] = 1;
         }
     }
 
@@ -42,7 +44,8 @@ public class UnionFind2 {
 
     /**
      * 将其中一个节点的根节点，放到另外一个节点的根节点下面
-     * 缺点：合并之后树的高度可能回很高
+     * 将层级低的合并到层级高的节点上
+     *
      * @param p
      * @param q
      */
@@ -52,7 +55,13 @@ public class UnionFind2 {
         if (pRoot == qRoot) {
             return;
         }
-        parent[pRoot] = qRoot;
+        if (sz[pRoot] < sz[qRoot]) {
+            parent[pRoot] = qRoot;
+            sz[qRoot] += sz[pRoot];
+        } else {
+            parent[qRoot] = pRoot;
+            sz[pRoot] += sz[qRoot];
+        }
     }
 
     public void print() {
@@ -61,4 +70,5 @@ public class UnionFind2 {
         }
         System.out.println();
     }
+
 }

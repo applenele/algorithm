@@ -1,10 +1,7 @@
 package com.smallcode;
 
 import com.smallcode.algorithm.*;
-import com.smallcode.datastructure.BinarySearchTree;
-import com.smallcode.datastructure.MaxHeap;
-import com.smallcode.datastructure.UnionFind;
-import com.smallcode.datastructure.UnionFind2;
+import com.smallcode.datastructure.*;
 import com.smallcode.util.PrintUtils;
 import com.smallcode.util.RandomUtil;
 import com.smallcode.util.SampleDataUtil;
@@ -56,11 +53,13 @@ public class App {
 
 //        binarySearchTreeTest();
 
-        int n = 100000;
+        int n = 100;
        // unionFindTest1();
         unionFindTest2(n);
         System.gc();
         unionFindTest3(n);
+        System.gc();
+        unionFindTest4(n);
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -257,5 +256,27 @@ public class App {
         long endTime = System.currentTimeMillis();
         float excTime = (float) (endTime - startTime) / 1000;
         System.out.println("执行时间：" + excTime + "s");
+
+        unionFind.print();
+    }
+
+    public static void unionFindTest4(int n) {
+        UnionFind3 unionFind = new UnionFind3(n);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.union(a, b);
+        }
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.isConnected(a, b);
+        }
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        System.out.println("执行时间：" + excTime + "s");
+
+        unionFind.print();
     }
 }
