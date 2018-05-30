@@ -53,13 +53,15 @@ public class App {
 
 //        binarySearchTreeTest();
 
-        int n = 100;
+        int n = 100000;
        // unionFindTest1();
         unionFindTest2(n);
         System.gc();
         unionFindTest3(n);
         System.gc();
         unionFindTest4(n);
+        System.gc();
+        unionFindTest5(n);
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -257,7 +259,7 @@ public class App {
         float excTime = (float) (endTime - startTime) / 1000;
         System.out.println("执行时间：" + excTime + "s");
 
-        unionFind.print();
+//        unionFind.print();
     }
 
     public static void unionFindTest4(int n) {
@@ -277,6 +279,25 @@ public class App {
         float excTime = (float) (endTime - startTime) / 1000;
         System.out.println("执行时间：" + excTime + "s");
 
-        unionFind.print();
+//        unionFind.print();
+    }
+
+    public static void unionFindTest5(int n) {
+        UnionFind4 unionFind = new UnionFind4(n);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.union(a, b);
+        }
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.isConnected(a, b);
+        }
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        System.out.println("执行时间：" + excTime + "s");
+//        unionFind.print();
     }
 }

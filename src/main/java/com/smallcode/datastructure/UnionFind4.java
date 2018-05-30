@@ -4,21 +4,21 @@ package com.smallcode.datastructure;
  * @author niele
  * @date 2018/5/30
  */
-public class UnionFind3 {
+public class UnionFind4 {
 
     private int[] parent;
 
     private int count;
 
-    private int[] sz;
+    private int[] rank;
 
-    public UnionFind3(int n) {
+    public UnionFind4(int n) {
         parent = new int[n];
         count = n;
-        sz = new int[n];
+        rank = new int[n];
         for (int i = 0; i < n; i++) {
             parent[i] = i;
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -44,8 +44,8 @@ public class UnionFind3 {
 
     /**
      * 将其中一个节点的根节点，放到另外一个节点的根节点下面
-     * 将子节点少的合并到子节点多的节点上
-     *  缺点：高度还是没有得到解决
+     * 将子节高度低的合并到高度高的上面
+     *
      * @param p
      * @param q
      */
@@ -55,12 +55,13 @@ public class UnionFind3 {
         if (pRoot == qRoot) {
             return;
         }
-        if (sz[pRoot] < sz[qRoot]) {
+        if (rank[pRoot] < rank[qRoot]) {
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
-        } else {
+        } else if (rank[pRoot] > rank[qRoot]) {
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+        } else {
+            parent[pRoot] = qRoot;
+            rank[qRoot] += 1;
         }
     }
 
@@ -70,5 +71,4 @@ public class UnionFind3 {
         }
         System.out.println();
     }
-
 }
