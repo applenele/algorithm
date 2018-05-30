@@ -1,18 +1,19 @@
 package com.smallcode.datastructure;
 
 /**
+ * 路径压缩，减少树的高度
+ *
  * @author niele
  * @date 2018/5/30
  */
-public class UnionFind4 {
-
+public class UnionFind5 {
     private int[] parent;
 
     private int count;
 
     private int[] rank;
 
-    public UnionFind4(int n) {
+    public UnionFind5(int n) {
         parent = new int[n];
         count = n;
         rank = new int[n];
@@ -31,9 +32,11 @@ public class UnionFind4 {
     public int find(int p) {
         if (p >= 0 && p < count) {
             while (p != parent[p]) {
+                // 路径压缩
+                parent[p] = parent[parent[p]];
                 p = parent[p];
             }
-            return p; 
+            return p;
         }
         throw new RuntimeException();
     }
@@ -71,4 +74,5 @@ public class UnionFind4 {
         }
         System.out.println();
     }
+
 }

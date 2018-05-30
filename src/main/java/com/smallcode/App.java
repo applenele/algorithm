@@ -55,13 +55,17 @@ public class App {
 
         int n = 100000;
        // unionFindTest1();
-        unionFindTest2(n);
+//        unionFindTest2(n);
+//        System.gc();
+//        unionFindTest3(n);
+//        System.gc();
+//        unionFindTest4(n);
+//        System.gc();
+//        unionFindTest5(n);
+//        System.gc();
+        unionFindTest6(n);
         System.gc();
-        unionFindTest3(n);
-        System.gc();
-        unionFindTest4(n);
-        System.gc();
-        unionFindTest5(n);
+        unionFindTest7(n);
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -298,6 +302,45 @@ public class App {
         long endTime = System.currentTimeMillis();
         float excTime = (float) (endTime - startTime) / 1000;
         System.out.println("执行时间：" + excTime + "s");
+//        unionFind.print();
+    }
+
+    public static void unionFindTest6(int n) {
+        UnionFind5 unionFind = new UnionFind5(n);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.union(a, b);
+        }
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.isConnected(a, b);
+        }
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        System.out.println("路劲压缩过的并查集执行时间：" + excTime + "s");
+//        unionFind.print();
+    }
+
+
+    public static void unionFindTest7(int n) {
+        UnionFind6 unionFind = new UnionFind6(n);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.union(a, b);
+        }
+        for (int i = 0; i < n; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            unionFind.isConnected(a, b);
+        }
+        long endTime = System.currentTimeMillis();
+        float excTime = (float) (endTime - startTime) / 1000;
+        System.out.println("递归路劲压缩过的并查集执行时间：" + excTime + "s");
 //        unionFind.print();
     }
 }

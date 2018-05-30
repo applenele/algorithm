@@ -4,7 +4,7 @@ package com.smallcode.datastructure;
  * @author niele
  * @date 2018/5/30
  */
-public class UnionFind4 {
+public class UnionFind6 {
 
     private int[] parent;
 
@@ -12,7 +12,7 @@ public class UnionFind4 {
 
     private int[] rank;
 
-    public UnionFind4(int n) {
+    public UnionFind6(int n) {
         parent = new int[n];
         count = n;
         rank = new int[n];
@@ -30,10 +30,11 @@ public class UnionFind4 {
      */
     public int find(int p) {
         if (p >= 0 && p < count) {
-            while (p != parent[p]) {
-                p = parent[p];
+            if (p != parent[p]) {
+                // 递归的形式实现路劲压缩
+                parent[p] = find(parent[p]);
             }
-            return p; 
+            return parent[p];
         }
         throw new RuntimeException();
     }
@@ -71,4 +72,5 @@ public class UnionFind4 {
         }
         System.out.println();
     }
+
 }
