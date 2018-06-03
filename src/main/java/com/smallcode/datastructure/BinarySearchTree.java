@@ -1,7 +1,5 @@
 package com.smallcode.datastructure;
 
-import org.omg.CORBA.NO_IMPLEMENT;
-
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
