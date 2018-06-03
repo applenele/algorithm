@@ -2,6 +2,8 @@ package com.smallcode;
 
 import com.smallcode.algorithm.*;
 import com.smallcode.datastructure.*;
+import com.smallcode.datastructure.graph.AdjacencyList;
+import com.smallcode.datastructure.graph.AdjacencyMatrix;
 import com.smallcode.util.PrintUtils;
 import com.smallcode.util.RandomUtil;
 import com.smallcode.util.SampleDataUtil;
@@ -9,6 +11,7 @@ import com.smallcode.util.SampleDataUtil;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author Hello world!
@@ -54,7 +57,7 @@ public class App {
 //        binarySearchTreeTest();
 
         int n = 100000;
-       // unionFindTest1();
+        // unionFindTest1();
 //        unionFindTest2(n);
 //        System.gc();
 //        unionFindTest3(n);
@@ -63,9 +66,12 @@ public class App {
 //        System.gc();
 //        unionFindTest5(n);
 //        System.gc();
-        unionFindTest6(n);
-        System.gc();
-        unionFindTest7(n);
+//        unionFindTest6(n);
+//        System.gc();
+//        unionFindTest7(n);
+
+        adjMatrixTest(20, 100);
+        adjListTest(20,100);
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -342,5 +348,42 @@ public class App {
         float excTime = (float) (endTime - startTime) / 1000;
         System.out.println("递归路劲压缩过的并查集执行时间：" + excTime + "s");
 //        unionFind.print();
+    }
+
+    public static void adjMatrixTest(int n, int m) {
+        AdjacencyMatrix matrix = new AdjacencyMatrix(n, false);
+        for (int i = 0; i < m; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            matrix.addEdge(a, b);
+        }
+
+        for (int v = 0; v < n; v++) {
+            System.out.print(v + ":");
+            List<Integer> adj = matrix.adj(v);
+            for (Integer w : adj) {
+                System.out.print(w+",");
+            }
+            System.out.println();
+        }
+    }
+
+
+    public static void adjListTest(int n, int m) {
+        AdjacencyList matrix = new AdjacencyList(n, false);
+        for (int i = 0; i < m; i++) {
+            int a = RandomUtil.rand(0, n);
+            int b = RandomUtil.rand(0, n);
+            matrix.addEdge(a, b);
+        }
+
+        for (int v = 0; v < n; v++) {
+            System.out.print(v + ":");
+            List<Integer> adj = matrix.adj(v);
+            for (Integer w : adj) {
+                System.out.print(w+",");
+            }
+            System.out.println();
+        }
     }
 }

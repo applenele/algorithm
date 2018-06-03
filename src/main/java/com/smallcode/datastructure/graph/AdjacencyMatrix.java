@@ -1,5 +1,8 @@
 package com.smallcode.datastructure.graph;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 邻接矩阵 用于表示稠密图
  *
@@ -75,5 +78,20 @@ public class AdjacencyMatrix {
         return edge;
     }
 
+    /**
+     * 返回给定顶点的连接顶点
+     *
+     * @param v
+     * @return
+     */
+    public List<Integer> adj(int v) {
+        List<Integer> ret = new ArrayList<>();
+        for (int i = 0; i < v; i++) {
+            if (g[v][i]) {
+                ret.add(i);
+            }
+        }
+        return ret;
+    }
 
 }
