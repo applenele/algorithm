@@ -4,13 +4,8 @@ import com.smallcode.algorithm.*;
 import com.smallcode.datastructure.*;
 import com.smallcode.datastructure.graph.AdjacencyList;
 import com.smallcode.datastructure.graph.AdjacencyMatrix;
-import com.smallcode.util.PrintUtils;
 import com.smallcode.util.RandomUtil;
-import com.smallcode.util.SampleDataUtil;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -56,7 +51,7 @@ public class App {
 
 //        binarySearchTreeTest();
 
-        int n = 100000;
+       //int n = 100000;
         // unionFindTest1();
 //        unionFindTest2(n);
 //        System.gc();
@@ -70,8 +65,12 @@ public class App {
 //        System.gc();
 //        unionFindTest7(n);
 
-        adjMatrixTest(20, 100);
-        adjListTest(20,100);
+//        adjMatrixTest(20, 100);
+//        adjListTest(20,100);
+
+        DynamicProgramming dynamicProgramming = new DynamicProgramming();
+        int n = dynamicProgramming.dpLadder(10);
+        System.out.println(n);
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -386,4 +385,6 @@ public class App {
             System.out.println();
         }
     }
+
+
 }
