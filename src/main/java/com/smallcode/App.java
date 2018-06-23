@@ -6,6 +6,7 @@ import com.smallcode.datastructure.graph.AdjacencyList;
 import com.smallcode.datastructure.graph.AdjacencyMatrix;
 import com.smallcode.util.RandomUtil;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,9 +69,13 @@ public class App {
 //        adjMatrixTest(20, 100);
 //        adjListTest(20,100);
 
-        DynamicProgramming dynamicProgramming = new DynamicProgramming();
-        int n = dynamicProgramming.dpLadder(10);
-        System.out.println(n);
+//        DynamicProgramming dynamicProgramming = new DynamicProgramming();
+//        int n = dynamicProgramming.dpLadder(10);
+//        System.out.println(n);
+
+//        System.out.println(new Date(1L));
+
+        knapsackTest();
     }
 
     public static <T extends Comparable<T>> void shellSortTest(T[] array) {
@@ -384,6 +389,13 @@ public class App {
             }
             System.out.println();
         }
+    }
+
+    public static void knapsackTest(){
+        Knapsack knapsack = new Knapsack();
+        knapsack.knapsack();
+
+        System.out.println(knapsack.B[5][20]);
     }
 
 
